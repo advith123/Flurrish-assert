@@ -19,8 +19,28 @@ flourrish-website/
 │   ├── manage-chennai-property-from-usa.html
 │   ├── tenant-verification-checklist-tamil-nadu.html
 │   └── nri-tax-basics-rental-income.html
+├── areas/
+│   ├── index.html                  Areas we serve (hub)
+│   ├── omr.html                    OMR: Perungudi, Thoraipakkam, Sholinganallur
+│   ├── ecr.html                    ECR: villas and beach houses
+│   ├── south-chennai.html          Adyar, Besant Nagar, Velachery
+│   └── tambaram-gst-road.html      Tambaram, Pallavaram, Medavakkam, Chengalpattu
+├── nri/
+│   ├── usa-canada.html             NRIs in the USA and Canada
+│   ├── uae-gulf.html               NRIs in the UAE and Gulf
+│   ├── uk-europe.html              NRIs in the UK and Europe
+│   └── singapore-australia.html    NRIs in Singapore, Malaysia and Australia
+├── chennai-property-glossary.html  Patta, EC, POA, NRO, TDS and more
 ├── legal.html                      Privacy, terms, disclaimer, photo credits
 ├── 404.html                        "Page not found" page
+├── robots.txt                      Crawler rules (search engines and AI assistants welcome)
+├── sitemap.xml                     All public pages, for Google and Bing
+├── llms.txt                        Short summary of the business for AI assistants
+├── llms-full.txt                   Full text reference for AI assistants
+├── site.webmanifest                Browser/app icon settings
+├── docs/
+│   ├── SEO-AEO-GEO-PLAN.md         Who to target, where, what to publish, how to measure
+│   └── keyword-map.csv             Page-by-page keywords, questions and audiences
 ├── css/
 │   └── style.css                   All styles (contents list at the top of the file)
 ├── js/
@@ -54,6 +74,17 @@ one automatically through `srcset`.
   copy of the icon set (at the top of `<body>`) so pages work when opened straight
   from disk.
 
+## Search (SEO, AEO, GEO)
+
+Every page has a canonical URL on https://flourrishassets.com, a written title and
+description, Open Graph tags and schema.org structured data in a
+`<script type="application/ld+json">` block. The full plan, including Google Business
+Profile setup, reviews, content calendar and measurement, is in
+`docs/SEO-AEO-GEO-PLAN.md`.
+
+When you add or change a page: give it a unique title and description, add its URL to
+`sitemap.xml` and `llms.txt`, and update the `<lastmod>` date in `sitemap.xml`.
+
 ## Forms
 
 The site has no server. The consultation form and checklist form open WhatsApp with
@@ -67,8 +98,8 @@ of `js/main.js`.
 - [ ] Add the real Facebook, Instagram, LinkedIn and YouTube links (footer, every page).
 - [ ] Confirm `hello@flourrish.in` and the Mon–Sat 9:00–6:00 hours.
 - [ ] Have the Privacy Policy and Terms (in `legal.html`) finalised by a legal advisor.
-- [ ] Change the `og:image` URL in each page's `<head>` to the full live URL of
-      `assets/brand/og-image.jpg` so link previews work on WhatsApp and LinkedIn.
+- [ ] Follow the launch checklist in `docs/SEO-AEO-GEO-PLAN.md` (Search Console, Bing,
+      Google Business Profile, schema tests).
 - [ ] Keep the Photo credits section in `legal.html` while the Wikimedia Commons photos are used.
 
 ## Hosting

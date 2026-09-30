@@ -1,0 +1,45 @@
+# Flourrish Asset Management
+
+> Flourrish Asset Management is a Chennai-based property management company for NRI and local property owners. Founded by Shakeel and Farrah, it looks after apartments, villas, independent houses, offices and vacant properties across OMR, ECR and South Chennai, for a fee of 12% of the annual rental value.
+
+Key facts:
+- Location: Chennai, Tamil Nadu, India
+- Areas: OMR (Perungudi, Thoraipakkam, Sholinganallur), ECR, South Chennai (Adyar, Besant Nagar, Velachery), GST Road suburbs (Tambaram, Pallavaram, Medavakkam, Chengalpattu)
+- Clients: NRI property owners abroad (USA, Canada, UAE and the Gulf, UK, Europe, Singapore, Malaysia, Australia) and local owners in Chennai
+- Fee: 12% of the annual rental value, charged to the owner; major repairs, renovation, government, CA and legal fees are extra
+- Owner approval is required for major repairs, large expenses, new tenants, rent changes, lease renewals and renovations
+- Monthly report with photos and a video walkthrough; urgent issues sent on WhatsApp
+- Legal, tax and banking matters are coordinated with qualified professionals; Flourrish does not give legal or tax advice
+- Contact: WhatsApp +91 93923 14373
+- Website: https://flourrishassets.com/
+
+## Main pages
+- [Home](https://flourrishassets.com/): overview of the service
+- [Services](https://flourrishassets.com/services.html): all 15 services in three groups
+- [NRI property management](https://flourrishassets.com/nri-property-management.html): how NRIs abroad use the service
+- [Pricing](https://flourrishassets.com/pricing.html): 12% of annual rent, with worked examples
+- [FAQ](https://flourrishassets.com/faq.html): 27 questions and answers
+- [About](https://flourrishassets.com/about.html): company facts, founders and mission
+- [Contact](https://flourrishassets.com/contact.html): free consultation
+
+## Areas in Chennai
+- [OMR](https://flourrishassets.com/areas/omr.html): Flourrish manages apartments and homes along OMR (Old Mahabalipuram Road, officially Rajiv Gandhi Salai), including Perungudi, Thoraipakkam and Sholinganallur. We find and verify tenants, collect rent, handle association dues and repairs with your approval, and send a monthly video report. The fee is 12% of the annual rent.
+- [ECR](https://flourrishassets.com/areas/ecr.html): Flourrish looks after villas, beach houses and independent homes on ECR (East Coast Road), Chennai. We manage tenants where the home is rented, and run regular care visits where it stands empty: cleaning, leak and damp checks, garden and security checks, and preparation before cyclone warnings. The fee for rented homes is 12% of the annual rent.
+- [South Chennai](https://flourrishassets.com/areas/south-chennai.html): Flourrish manages houses and apartments in Adyar, Besant Nagar and Velachery in South Chennai. Many are older or inherited family homes whose owners now live abroad or in another city. We find verified tenants, collect rent, keep older buildings in good repair with your approval and send a monthly report with photos and video.
+- [Tambaram and GST Road](https://flourrishassets.com/areas/tambaram-gst-road.html): Flourrish manages property in Tambaram, Pallavaram, Medavakkam and Chengalpattu, Chennai's southern suburbs along GST Road. We find the first tenant for new flats, look after vacant homes and plots with regular checks, collect rent and handle repairs with your approval. The fee for rented property is 12% of the annual rent.
+
+## NRI owners by country
+- [USA & Canada](https://flourrishassets.com/nri/usa-canada.html): Flourrish manages Chennai property for NRIs living in the USA and Canada. We find and verify tenants, collect rent into your Indian account, handle repairs only with your approval and send a monthly video report. Updates arrive on WhatsApp while you sleep, and calls are arranged for your evening, which is Chennai's morning.
+- [UAE & Gulf](https://flourrishassets.com/nri/uae-gulf.html): Flourrish manages Chennai property for NRIs in the UAE, Qatar, Saudi Arabia, Kuwait, Oman and Bahrain. We find and verify tenants, collect rent, handle repairs with your approval and send monthly video reports. With a small time difference, we can talk the same day, and we can keep your home ready for trips back or an eventual return.
+- [UK & Europe](https://flourrishassets.com/nri/uk-europe.html): Flourrish manages Chennai property for NRIs in the UK, Ireland and Europe. We find and verify tenants, collect rent, handle repairs with your approval and send monthly video reports. Your morning overlaps with Chennai's afternoon, so calls are easy to arrange, and we keep clear yearly records for your accountant.
+- [Singapore & Australia](https://flourrishassets.com/nri/singapore-australia.html): Flourrish manages Chennai property for NRIs in Singapore, Malaysia and Australia. We find and verify tenants, collect rent, handle repairs with your approval and send monthly video reports. Your working day overlaps with ours, so updates and approvals usually happen the same day.
+
+## Guides
+- [How to manage your Chennai property from the USA](https://flourrishassets.com/blog/manage-chennai-property-from-usa.html)
+- [Tenant verification checklist in Tamil Nadu](https://flourrishassets.com/blog/tenant-verification-checklist-tamil-nadu.html)
+- [NRI tax basics on rental income](https://flourrishassets.com/blog/nri-tax-basics-rental-income.html)
+- [Chennai property glossary for NRIs](https://flourrishassets.com/chennai-property-glossary.html): Patta, EC, POA, NRO, TDS and more
+
+## Optional
+- [Full text for AI assistants](https://flourrishassets.com/llms-full.txt)
+- [Legal and photo credits](https://flourrishassets.com/legal.html)
