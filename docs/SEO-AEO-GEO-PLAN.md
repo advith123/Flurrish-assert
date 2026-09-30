@@ -167,6 +167,7 @@ For "near me" and Maps searches in Chennai, the Business Profile matters more th
 
 - **Primary category:** Property management company. Only add "Real estate agency" as a second category if Flourrish really does sales or letting as a separate service.
 - **Address:** if owners don't visit an office, set it up as a service-area business and hide the address. List the service areas: Sholinganallur, Perungudi, Thoraipakkam, Velachery, Adyar, Besant Nagar, Medavakkam, Tambaram, Pallavaram, Chengalpattu, plus OMR and ECR where Google allows.
+- **Phone:** primary +91 99440 70397 (also WhatsApp); add +91 73585 86876 as the additional phone. Use exactly these on every directory too.
 - **Hours:** Monday to Saturday, 9:00 AM to 6:00 PM, matching the website. Change both together if this changes.
 - **Website link:** `https://flourrishassets.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`, so profile visits show up separately in analytics.
 - **Services:** add each of the 15 services with a one-line description from the Services page.

@@ -65,8 +65,13 @@ one automatically through `srcset`.
 
 - **Replace a photo:** keep the same file name and export both sizes
   (e.g. `villa.jpg` at 1400px wide and `villa-700.jpg` at 700px wide).
-- **WhatsApp number:** change `WHATSAPP_NUMBER` at the top of `js/main.js`, then
-  search all `.html` files for `919392314373` and replace it.
+- **WhatsApp number (+91 99440 70397):** change `WHATSAPP_NUMBER` at the top of
+  `js/main.js`, then search all files for `919944070397` and `99440 70397` and replace them.
+- **Alternate number (+91 73585 86876):** shown for calls in the footer and on the contact
+  page; search all files for `7358586876` and `73585 86876` to change it.
+- **WhatsApp quick-details card:** every WhatsApp button first asks where the property or
+  land is, the property type and the service needed, and adds the answers to the message.
+  The area, property type and service lists are at the top of `js/main.js`.
 - **Header and footer:** these are repeated in every page. If you change a menu link,
   change it in each `.html` file (find-and-replace works well).
 - **Colours and fonts:** edit the tokens at the top of `css/style.css` (`--o`, `--ink`, …).
