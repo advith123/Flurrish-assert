@@ -1,0 +1,11 @@
+{
+  "name": "flourrish-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "python3 build/build.py",
+    "start": "node server/server.js",
+    "dev": "ENQUIRY_DRY_RUN=1 node server/server.js"
+  },
+  "engines": { "node": ">=18" }
+}
