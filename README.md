@@ -1,120 +1,128 @@
-# Flourrish Asset Management — website
+# Flourrish Asset Management — Website
 
-Static site: HTML5, CSS3, vanilla JavaScript and SVG. No frameworks, no build step required to run it. Open `dist/index.html` directly from disk or upload the contents of `dist/` to any static host.
+Current version: **4** (see `CHANGELOG.md`). Earlier versions are kept as `flourrish-website-v1.zip`, `-v2.zip` and `-v3.zip`.
 
-## Folder layout
+Static website: plain HTML, one stylesheet, one script. No framework, no build step.
+Open `index.html` in a browser to view it, or upload the whole folder to any web host.
 
-```
-dist/                      ← the website (deploy this folder)
-  index.html, services.html, service-*.html, property-types.html,
-  how-it-works.html, areas.html, about.html, resources.html,
-  article-*.html, faq.html, contact.html, proposal.html,
-  privacy.html, terms.html, 404.html
-  sitemap.xml, robots.txt, IMAGES.md
-  assets/css/style.css     ← all styles; design tokens at the top of the file
-  assets/js/config.js      ← contact details + form endpoint (edit this)
-  assets/js/areas.js       ← generated from build/common.py (do not edit by hand)
-  assets/js/main.js        ← header, mobile nav, WhatsApp links, FAQ search, area selects
-  assets/js/form.js        ← enquiry form validation and submission
-  assets/js/globe.js       ← hero globe (canvas, no libraries)
-  assets/js/land-dots.js   ← precomputed land dot grid for the globe
-  assets/img/logo.svg      ← PLACEHOLDER: replace with the approved logo
-  assets/img/favicon.svg   ← placeholder favicon in the brand orange
-  assets/img/og-default.png
-  assets/img/ph/*.svg      ← placeholder images (see IMAGES.md)
-build/                     ← Python generator for the HTML pages (optional)
-  build.py                 ← python3 build/build.py → regenerates dist/*.html, sitemap, areas.js, placeholders
-  common.py                ← contact details, navigation, service areas, services list, shared partials
-  content_home.py          ← home page
-  content_services.py      ← service pages, services index, property types, how it works
-  content_pages.py         ← areas, about, FAQ, contact, proposal, privacy, terms, 404
-  content_resources.py     ← resources index and articles
-```
-
-You can edit the HTML in `dist/` directly. The generator exists so that header, footer, navigation and the areas list change in one place; if you use it, make content edits in `build/` and rerun `python3 build/build.py` (Python 3, no packages needed; Pillow is optional for regenerating the OG image).
-
-## Things to do before launch
-
-1. **Logo** — done. The supplied `flourrish-logo.svg` is in the header, `flourrish-logo-full-on-dark.svg` in the footer, and `favicon.svg` / `favicon-32.png` / `apple-touch-icon.png` are linked. `og-image.jpg` (supplied) is the social-sharing image on every page. Note: the supplied logo carries the line "Your Assets. Our Expertise"; the site copy uses "Where Assets Flourish" as the primary tagline per the brief. Confirm which line is current.
-2. **Photographs** — all 19 slots now hold real, openly licensed photographs from Wikimedia Commons (no AI imagery), cropped to 4:3 and exported as JPG + WebP at 800/1600 px. `dist/IMAGES.md` is the full inventory with source, licence, author, alt text and which slots are "nearest available" rather than exact. `photo-credits.html` carries the required CC BY / CC BY-SA attribution and is linked from the footer; keep it live. The best remaining upgrade is replacing the nine flagged slots with Flourrish's own photography of Chennai properties (with owner permission) — see the flags in `IMAGES.md`.
-3. **Form endpoint** — done in code; needs one secret at deploy time. `config.js` points the form at `/api/enquiry`, which is served by `functions/api/enquiry.js` on Cloudflare Pages or by `server/server.js` on any Node host (see Deployment). Set `RESEND_API_KEY` (and `ENQUIRY_FROM` on a verified domain) or the endpoint returns a clear "not configured" error and the form tells the visitor to use WhatsApp — it never shows a false success. Opened from disk, the form always falls back to WhatsApp.
-4. **Legal pages** — `privacy.html` and `terms.html` carry a "Draft for review" box. Have them reviewed, then delete that paragraph (search for `callout` in those two files or in `build/content_pages.py`).
-5. **Founder bios** — the About page lists Farrah (Founder) and Shakeel (Co-Founder) with a note that bios will follow. No photos or portrait sections, per the current decision.
-6. **Analytics / Search Console** — nothing is wired in. Add the verification tag and any analytics snippet to `head()` in `build/common.py` (or to each page's `<head>`), and update the cookies paragraph in the privacy policy if tracking is added.
-7. **Fonts** — Inter and Manrope load from Google Fonts with system fallbacks, so the site still reads correctly offline or from `file://` without the webfonts.
-
-## Changing contact details or service areas
-
-- WhatsApp number, pre-filled message, email and form endpoint: `dist/assets/js/config.js` (runtime) and `build/common.py` (what is printed in the HTML). Keep both in sync, or just rebuild.
-- Service areas: edit `AREAS` in `build/common.py` and rebuild. That single list feeds the home-page section, the Areas page, the footer and the "Property location" select in the form.
-- Business hours: `HOURS` in `build/common.py`.
-- Second number is labelled "Phone 2" throughout.
-
-## Deliberate choices
-
-- No pricing appears anywhere. `proposal.html` explains what the fee depends on and ends in "Request a proposal".
-- No testimonials, ratings, client counts, years in business, awards or guarantees. The About page has an "Our approach to property care" section in place of testimonials until permissioned ones exist.
-- The sample inspection report on the home page is labelled illustrative in two places.
-- Overseas cities on the globe are owner locations; copy states repeatedly that properties are managed in Chennai only.
-- Wording avoided site-wide: "local team", "Chennai team", "not a broker".
-
-## Checks run before handover
-
-Headless Chromium, every page: no console errors; no horizontal overflow from 320px to 1600px; all internal links resolve; all images load; mobile menu opens, closes on Escape and on link tap; WhatsApp links are built from `config.js`; the form blocks empty submission with field-level errors and opens WhatsApp with the enquiry when no endpoint is set; FAQ search filters and shows an empty state; the globe renders a static frame under `prefers-reduced-motion`.
-
-Not yet measured: Core Web Vitals on a live host (the globe scripts are deferred and under 40 KB total; real photographs will dominate LCP, so size them to the slot and serve WebP/AVIF where possible).
-
-
-## Revision 2 (refinement pass)
-
-Changed files: `build/common.py` (logo/favicon/OG tags, responsive `<picture>` markup, credits page, inventory writer), `build/build.py`, `build/photos.json` (new), `build/content_home.py` (hero copy, sample-report label, hero photo), `build/content_services.py` (services index now uses photo cards), `dist/assets/css/style.css` (brand orange #FB5206 to match the logo, header/footer logo sizing, photo cards, picture handling, header fit), `dist/assets/js/globe.js` (depth shading, dot contrast, brand orange), all 25 generated pages, `dist/IMAGES.md`, `dist/assets/img/photos/*` (76 files), supplied brand assets copied into `dist/assets/img/`.
-
-Design changes with a reason: real photography replaces every dashed placeholder (credibility); the approved logo at consistent sizes in header, footer and icons (brand integrity); the services index moved from an icon list to photo cards so the page is not a wall of identical rows; the globe gained edge shading and darker land dots so it reads as a sphere on bright screens; the header was tightened so all eight nav items, both buttons and the wider logo fit at 1280–1600 without wrapping.
-
-QA results: zero console errors and zero failed requests on all 25 pages; no horizontal overflow at 320, 375, 390, 430, 768, 1024, 1100, 1200, 1280, 1366, 1440, 1600 and 1920 px; every internal link resolves; every image loads after scroll (lazy images included); form, mobile nav, FAQ search and WhatsApp links re-tested. Core Web Vitals still need measuring on the live host; the hero image is 1600 px JPG/WebP with `fetchpriority="high"`, everything else lazy-loads.
-
-Honest rating: 8/10. What holds it back from 9: a few photos are "nearest available" (towers instead of keys at a door, an electrician's panel instead of an inspector with a camera), the villa and interior photos are Indian but not Chennai, and no real testimonials or founder bios exist yet. Those are content dependencies on Flourrish, not code.
-
-## Revision 3 (push further)
-
-- Hero headline now carries the brand's orange accent on the second sentence ("Our responsibility."), echoing the supplied og-image treatment, with a short dash-marked eyebrow above it. The same orange-dash eyebrow labels every home-page section, which gives the long page a consistent rhythm without resorting to all-caps labels.
-- New full-bleed brand-statement band between the trust section and services: wide Chennai skyline photograph (same CC BY-SA source as the NRI service hero, cropped 2.4:1) with the supporting tagline "Your property. Our care. Always." This is the one place the site goes edge to edge.
-- The NRI section's numbered list became a sample owner-update card (three messages: inspection, quotation awaiting approval, completion), labelled illustrative. It shows the approval loop instead of describing it; nothing in it is a working control.
-- Quiet hover states on property, service and article cards (2 px lift, slow image zoom); the sample-report thumbnails use dashed tiles instead of flat grey blocks.
-- QA re-run after these changes: zero console errors, no horizontal overflow at 320/390/1024/1440/1600 on all 25 pages, no broken links or failed requests.
-
-Rating after this pass: 8.5/10. The remaining half point is still photography and real social proof from Flourrish.
-
-## Deployment (revision 4 — production hardening)
-
-Folder layout now includes a small backend for the enquiry form, with no dependencies:
+## Folder structure
 
 ```
-functions/api/enquiry.js        Cloudflare Pages Function: POST /api/enquiry
-functions/api/_lib/enquiry.js   shared validation, rate-limit, email payload (Resend API)
-server/server.js                Node 18+ alternative: serves dist/ and handles /api/enquiry
-package.json                    npm run build | start | dev (dev = dry-run, no email sent)
-dist/_headers                   security headers + CSP + cache rules (Cloudflare Pages / Netlify format)
-dist/site.webmanifest           PWA manifest with the supplied icons
+flourrish-website/
+├── index.html                      Home
+├── services.html                   Overview of all 26 services in five groups, approval flow, emergency response
+├── services/                       One page per service (26 pages), each with the full step-by-step process
+│   ├── land-*.html                 Land: EC check, Patta/Chitta, land visits, boundary check, leasing, land tax, sale
+│   ├── tenant-*.html, rent-*.html… Building: tenants, agreements, rent, move-in/out, inspections, video, maintenance, emergency, vacant care
+│   ├── commercial-*.html           Commercial: tenant sourcing, lease management, fit-out, maintenance
+│   └── property-tax.html …         Owner support: tax, utilities, RWA, reports, NRI support
+├── nri-property-management.html    NRI owners
+├── faq.html                        FAQs with search and topic filters (linked from the footer, not the top menu)
+├── about.html                      Story, mission, vision, why Flourrish, areas
+├── contact.html                    Free consultation form (sends via WhatsApp)
+├── blog.html                       Article list (linked from the footer, not the top menu)
+├── blog/
+│   ├── manage-chennai-property-from-usa.html
+│   ├── tenant-verification-checklist-tamil-nadu.html
+│   └── nri-tax-basics-rental-income.html
+├── areas/
+│   ├── index.html                  Areas we serve (hub)
+│   ├── omr.html                    OMR: Perungudi, Thoraipakkam, Sholinganallur
+│   ├── ecr.html                    ECR: villas and beach houses
+│   ├── south-chennai.html          Adyar, Besant Nagar, Velachery
+│   └── tambaram-gst-road.html      Tambaram, Pallavaram, Medavakkam, Chengalpattu
+├── nri/
+│   ├── usa-canada.html             NRIs in the USA and Canada
+│   ├── uae-gulf.html               NRIs in the UAE and Gulf
+│   ├── uk-europe.html              NRIs in the UK and Europe
+│   └── singapore-australia.html    NRIs in Singapore, Malaysia and Australia
+├── chennai-property-glossary.html  Patta, EC, POA, NRO, TDS and more
+├── legal.html                      Privacy, terms, disclaimer, photo credits
+├── 404.html                        "Page not found" page
+├── robots.txt                      Crawler rules (search engines and AI assistants welcome)
+├── sitemap.xml                     All public pages, for Google and Bing
+├── llms.txt                        Short summary of the business for AI assistants
+├── llms-full.txt                   Full text reference for AI assistants
+├── site.webmanifest                Browser/app icon settings
+├── docs/
+│   ├── SEO-AEO-GEO-PLAN.md         Who to target, where, what to publish, how to measure
+│   └── keyword-map.csv             Page-by-page keywords, questions and audiences
+├── css/
+│   └── style.css                   All styles (contents list at the top of the file)
+├── js/
+│   └── main.js                     Menu (incl. Services mega menu + mobile accordion), time-zone card, FAQ search, forms
+└── assets/
+    ├── brand/                      Logo (colour + white), favicon, apple icon, social share image
+    ├── icons/                      Flourrish icon pack (SVG)
+    ├── location/chennai-map.svg    Areas map
+    └── images/
+        ├── hero/                   Home hero photo
+        ├── nri/                    NRI video call, monthly report, owner dashboard
+        ├── properties/             Apartment, villa, house, office, commercial, vacant
+        ├── sections/               Local owners, Chennai skyline, OMR apartments
+        └── blog/                   Article cover images
 ```
 
-### Option A — Cloudflare Pages (recommended, free tier is enough)
-1. Push this folder to a Git repo. In Cloudflare Pages: Create project → connect repo → build command: *(none)* → build output directory: `dist`. Pages picks up `functions/` automatically.
-2. Settings → Environment variables: `RESEND_API_KEY` (from resend.com after verifying `flourrishassets.com`), `ENQUIRY_FROM` = `Flourrish Website <enquiries@flourrishassets.com>`, optionally `ENQUIRY_TO` (defaults to admin.flourrishassets@gmail.com).
-3. Optional: create a KV namespace and bind it as `RATE_KV` to enable per-IP rate limiting (5 submissions / 10 min). Without it the honeypot and validation still run.
-4. Custom domain → `flourrishassets.com`. Canonical URLs and the sitemap already use that domain.
+Every photo has two sizes: `name.jpg` (large, for big and high-resolution screens)
+and `name-700.jpg` / `name-800.jpg` etc. (small, for phones). Browsers pick the right
+one automatically through `srcset`.
 
-### Option B — any Node host / VPS
-`npm start` serves `dist/` on port 8787 with the same `/api/enquiry` handler and in-memory rate limiting. Put nginx or Caddy in front for TLS. Same environment variables as above. `npm run dev` runs in dry-run mode (validates, returns success, sends nothing) for local testing.
+## Common edits
 
-### Option C — pure static host (GitHub Pages, S3, shared hosting)
-No backend is available, so set `formEndpoint` in `dist/assets/js/config.js` to a Formspree URL (and add `https://formspree.io` to `connect-src` in `_headers` if the host honours it), or to `''` to route all enquiries through WhatsApp.
+- **Replace a photo:** keep the same file name and export both sizes
+  (e.g. `villa.jpg` at 1400px wide and `villa-700.jpg` at 700px wide).
+- **WhatsApp number (+91 99440 70397):** change `WHATSAPP_NUMBER` at the top of
+  `js/main.js`, then search all files for `919944070397` and `99440 70397` and replace them.
+- **Alternate number (+91 73585 86876):** shown for calls in the footer and on the contact
+  page; search all files for `7358586876` and `73585 86876` to change it.
+- **WhatsApp quick-details card:** every WhatsApp button first asks where the property or
+  land is, the property type and the service needed, and adds the answers to the message.
+  The area, property type and service lists are at the top of `js/main.js`.
+- **Header and footer:** these are repeated in every page. If you change a menu link,
+  change it in each `.html` file (find-and-replace works well).
+- **Colours and fonts:** edit the tokens at the top of `css/style.css` (`--o`, `--ink`, …).
+- **Icons:** the SVG files are in `assets/icons/`. Each page also contains an inline
+  copy of the icon set (at the top of `<body>`) so pages work when opened straight
+  from disk.
 
-### What the backend does
-Validates every field server-side with length limits, rejects on missing consent, silently accepts honeypot hits, rate-limits per IP, emails the enquiry through Resend with the owner's address as reply-to, and returns field-level errors that the form displays inline. The frontend only shows "sent" on a `200 {ok:true}`.
+## Search (SEO, AEO, GEO)
 
-### Verified in this revision
-Node server tested locally in dry-run: validation returns per-field errors (400), honeypot returns 200 without sending, GET returns 405, unknown paths serve `404.html` with a 404 status, full form submission end-to-end from the browser shows the success state and resets the form, server-side field errors surface inline, and the sixth request from one IP inside ten minutes gets 429. The Cloudflare function shares the same validation module; it has not been run under wrangler here, so do one test submission after the first deploy.
+Every page has a canonical URL on https://flourrishassets.com, a written title and
+description, Open Graph tags and schema.org structured data in a
+`<script type="application/ld+json">` block. The full plan, including Google Business
+Profile setup, reviews, content calendar and measurement, is in
+`docs/SEO-AEO-GEO-PLAN.md`.
 
-### Not done, by design
-No analytics, no cookies, no third-party scripts (the CSP would block them anyway — extend `script-src` when you add Search Console verification or analytics). Core Web Vitals should be measured with PageSpeed Insights once the site is on its real host and CDN.
+When you add or change a page: give it a unique title and description, add its URL to
+`sitemap.xml` and `llms.txt`, and update the `<lastmod>` date in `sitemap.xml`.
+
+## Forms
+
+The site has no server. The consultation form and checklist form open WhatsApp with
+the visitor's details pre-filled. To collect submissions by email instead, connect a
+form service (e.g. Formspree or Netlify Forms) and replace the handlers in section 5
+of `js/main.js`.
+
+## Before going live
+
+- [ ] Replace the review placeholders on the home page with real client reviews (with permission).
+- [ ] Add the real Facebook, Instagram, LinkedIn and YouTube links (footer, every page).
+- [ ] Confirm `hello@flourrish.in` and the Mon–Sat 9:00–6:00 hours.
+- [ ] Have the Privacy Policy and Terms (in `legal.html`) finalised by a legal advisor.
+- [ ] Follow the launch checklist in `docs/SEO-AEO-GEO-PLAN.md` (Search Console, Bing,
+      Google Business Profile, schema tests).
+- [ ] Keep the Photo credits section in `legal.html` while the Wikimedia Commons photos are used.
+
+## Hosting
+
+Any static host works: Netlify (drag and drop the folder), Vercel, GitHub Pages,
+Cloudflare Pages, or standard web hosting. `404.html` is picked up automatically by
+Netlify, Cloudflare Pages and GitHub Pages.
+
+## Services menu
+
+The Services item in the header opens a full-width panel with five tabs (Land, Building, Commercial,
+Owner support, For NRI owners). On phones it becomes an expandable list inside the burger menu.
+The menu markup is the same on every page; the list of services lives in `build/services_data.py`
+and `build/build.py` regenerates the menu, the 26 service pages, `services.html` groups, the sitemap
+and `llms.txt`. Run `python3 build/build.py .` from this folder after editing the data file.
